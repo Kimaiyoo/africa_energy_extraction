@@ -44,10 +44,10 @@ python scraper.py
 
 ## ⚙️ Progress
 
-✅ Implemented automated scraping and filtering logic
-✅ Resolved initial timeout issue for Electricity dataset
-✅ Files successfully downloaded and verified for multiple categories
-🔄 Next: Data formatting, validation, and MongoDB integration
+- Implemented automated scraping and filtering logic
+- Resolved initial timeout issue for Electricity dataset
+- Files successfully downloaded and verified for multiple categories
+- Next: Data formatting, validation, and MongoDB integration
 
 ## 🧠 Tech Stack
 - Python 3
