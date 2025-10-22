@@ -1,0 +1,9 @@
+tests/
+
+notebooks/
+
+.venv/
+
+chat.txt
+
+data/
