@@ -1,4 +1,4 @@
-# 🌍 Africa Energy Data Extraction (2000–2024)
+# 🌍 Africa Energy Data Extraction (2000–2022)
 
 This project automates the extraction of energy-related datasets from the Africa Energy Portal
  using Playwright.
