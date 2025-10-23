@@ -1,6 +1,5 @@
 import asyncio
 import os
-from datetime import datetime
 from playwright.async_api import async_playwright
 import sys
 
@@ -97,24 +96,26 @@ async def process_grouping(page, grouping, is_first=False):
     # additional wait
     await page.wait_for_timeout(10000)
 
-    try:
-        download_btn = page.locator("a.download-btn.download-btn-1").first
-        is_enabled = await download_btn.is_enabled()
-        is_visible = await download_btn.is_visible()
-
-        if not (is_enabled and is_visible):
-            print(f"download button seems unresponsive for {grouping}. Restarting script")
-            await restart_script()
-
-    except:
-        print(f"could not verify download state")
-
+    
     # Download step
     try:
         print("Initiating download...")
         download_btn = page.locator("a.download-btn.download-btn-1").first
         await download_btn.scroll_into_view_if_needed()
-        await page.wait_for_timeout(3000)
+        #await page.wait_for_timeout(3000)
+        try:
+            download_btn = page.locator("a.download-btn.download-btn-1").first
+            is_enabled = await download_btn.is_enabled()
+            is_visible = await download_btn.is_visible()
+
+            if not (is_enabled and is_visible):
+                print(f"download button seems unresponsive for {grouping}. Restarting script")
+                await restart_script()
+
+        except:
+            print(f"could not verify download state")
+
+        
 
         timeout= 600000 if is_first else 300000
 
