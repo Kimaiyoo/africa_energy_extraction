@@ -57,3 +57,6 @@ python scraper.py
 - Python 3
 - Playwright
 - MongoDB (upcoming integration)
+
+## Resources
+1. [Playwright Documentation](https://playwright.dev/python/docs/)
