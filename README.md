@@ -27,7 +27,7 @@ Each row represents one metric per country across all years.
 
 1. Clone the repository
 ```bash
-git clone https://github.com/Kimaiyo/africa_energy_extraction.git
+git clone https://github.com/Kimaiyoo/africa_energy_extraction.git
 cd africa_energy_extraction
 ```
 
