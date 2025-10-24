@@ -35,12 +35,16 @@ cd africa_energy_extraction
 ```bash
 pip install -r requirements.txt
 ```
+3. Install the required browsers
+```bash
+playwright install
+```
 
-3. Run the scraper
+4. Run the scraper
 ```bash
 python scraper.py
 ```
-3. Downloaded files will be saved in the datasets/ folder.
+5. Downloaded files will be saved in the datasets/ folder.
 
 ## ⚙️ Progress
 
