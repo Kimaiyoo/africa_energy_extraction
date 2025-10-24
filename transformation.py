@@ -76,6 +76,28 @@ def process_dataset(file_path):
         df = pd.read_excel(file_path, sheet_name=sheet_name)
         df.columns = df.columns.str.strip()
 
+        # Validation and cleaning
+        missing_count = df.isna().sum().sum()
+
+        if missing_count > 0:
+            print(f"Found {missing_count} missing values in '{sheet_name}'... replacing numeric NaNs with 0.")
+
+            missing_by_col = df.isna().sum()
+            missing_by_col = missing_by_col[missing_by_col > 0]
+            print(missing_by_col.to_string())
+
+            for col in df.select_dtypes(include=["float", "int"]).columns:
+                df[col] = df[col].fillna(0)
+            
+            missing_verification = df.isna().sum().sum()
+            if missing_verification == 0:
+                print("No missing values")
+            else:
+                print(f"found {missing_verification} missing values.")
+
+        else:
+            print(f"No missing values in '{sheet_name}'.")
+
         for _, row in df.iterrows():
             country = row["Country"]
             indicator = row["Indicator"]
@@ -104,12 +126,12 @@ def process_dataset(file_path):
             all_data.append(record)
 
     # Convert to DataFrame
-    final_df = pd.DataFrame(all_data)
+    df = pd.DataFrame(all_data)
 
     # Add country_serial
-    unique_countries = final_df["country"].unique()
+    unique_countries = df["country"].unique()
     country_serial_map = {country: i + 1 for i, country in enumerate(unique_countries)}
-    final_df["country_serial"] = final_df["country"].map(country_serial_map)
+    df["country_serial"] = df["country"].map(country_serial_map)
 
     # Reorder columns
     year_columns = [str(year) for year in range(2000, 2023)]
@@ -125,14 +147,15 @@ def process_dataset(file_path):
         "source",
     ] + year_columns
 
-    final_df = final_df[column_order]
+    df = df[column_order]
+
 
     # Save outputs
     output_name = dataset_name
-    final_df.to_csv(f"datasets/{output_name}.csv", index=False)
+    df.to_csv(f"datasets/{output_name}.csv", index=False)
     
     print(f" {dataset_name.capitalize()} dataset formatted successfully.")
-    return final_df
+    return df
 
 
 # Main Execution
