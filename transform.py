@@ -76,7 +76,6 @@ def process_dataset(file_path):
         df = pd.read_excel(file_path, sheet_name=sheet_name)
         df.columns = df.columns.str.strip()
 
-        # Validation and cleaning
         missing_count = df.isna().sum().sum()
 
         if missing_count > 0:
