@@ -14,3 +14,9 @@ notes.txt
 
 images/
 
+# Ignore local user workspace state and personal overrides
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+!.vscode/launch.json
+
