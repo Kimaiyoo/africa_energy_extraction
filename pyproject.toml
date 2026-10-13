@@ -1,0 +1,33 @@
+[project]
+name = "africa-energy-extraction"
+version = "0.1.0"
+description = "Pipeline, API and dashboard for African energy indicators (2000-2023)"
+readme = "README.md"
+authors = [
+    { name = "Kimaiyoo", email = "naomijepkorir18@gmail.com" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi>=0.143.0",
+    "httpx>=0.28.1",
+    "pandas>=3.0.6",
+    "plotly>=7.1.0",
+    "pycountry>=26.2.16",
+    "pymongo>=4.18.3",
+    "python-dotenv>=1.2.4",
+    "streamlit>=1.65.0",
+    "uvicorn>=0.54.0",
+]
+
+[project.scripts]
+africa-energy = "africa_energy_extraction.cli:main"
+
+
+[build-system]
+requires = ["uv_build>=0.12.23,<0.13.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "pytest>=9.1.1",
+]

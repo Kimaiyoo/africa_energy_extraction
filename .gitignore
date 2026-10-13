@@ -1,14 +1,22 @@
 tests/
 
-notebooks/
-
 .venv/
-
-chat.txt
 
 data/
 
 .env
 
+__pycache__/
+*.pyc
+.pytest_cache
 
+notes.txt
+
+images/
+
+# Ignore local user workspace state and personal overrides
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+!.vscode/launch.json
 
